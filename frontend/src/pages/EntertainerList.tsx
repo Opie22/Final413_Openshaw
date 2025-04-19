@@ -18,7 +18,7 @@ export default function EntertainerList() {
   // Fetch list of entertainers on component mount
 
   useEffect(() => {
-    fetch('https://localhost:5000/api/entertainers')
+    fetch('https://final413-backend-fgfrbnb2bxfxe0eq.eastus-01.azurewebsites.net/api/entertainers')
       .then(res => res.json())
       .then(setEntertainers);
   }, []);

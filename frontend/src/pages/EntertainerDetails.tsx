@@ -24,7 +24,7 @@ export default function EntertainerDetails() {
   const [entertainer, setEntertainer] = useState<Entertainer | null>(null);
 // Fetch entertainer data
   useEffect(() => {
-    fetch(`https://localhost:5000/api/entertainers/${id}`)
+    fetch(`https://final413-backend-fgfrbnb2bxfxe0eq.eastus-01.azurewebsites.net/api/entertainers/${id}`)
       .then(res => res.json())
       .then(setEntertainer);
   }, [id]);
@@ -34,7 +34,7 @@ export default function EntertainerDetails() {
     const confirmed = window.confirm("Are you sure you want to delete this entertainer?");
     if (!confirmed) return;
 
-    await fetch(`https://localhost:5000/api/entertainers/${id}`, {
+    await fetch(`https://final413-backend-fgfrbnb2bxfxe0eq.eastus-01.azurewebsites.net/api/entertainers/${id}`, {
       method: 'DELETE'
     });
     navigate('/entertainers');
