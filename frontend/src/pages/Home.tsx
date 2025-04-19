@@ -1,5 +1,9 @@
 // import React from 'react';
 // import { Link } from 'react-router-dom';
+
+
+// Landing page welcoming the user and linking to the entertainers list
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 

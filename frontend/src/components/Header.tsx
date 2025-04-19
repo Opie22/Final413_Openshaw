@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
@@ -7,7 +7,7 @@ export default function Header() {
       <div className="container">
         <Link className="navbar-brand fw-bold" to="/">Entertainment Agency</Link>
 
-        {/* 🔽 This is the hamburger toggler for small screens */}
+        {/*  hamburger toggler for small screens */}
         <button
           className="navbar-toggler"
           type="button"

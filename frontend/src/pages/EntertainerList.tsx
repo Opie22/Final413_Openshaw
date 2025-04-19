@@ -1,8 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// src/pages/EntertainerList.tsx
+// Displays a list of entertainers with booking stats and links to details
+
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+// Summary DTO matching API structure
 
 interface EntertainerSummary {
   entertainerID: number;
@@ -13,6 +15,7 @@ interface EntertainerSummary {
 
 export default function EntertainerList() {
   const [entertainers, setEntertainers] = useState<EntertainerSummary[]>([]);
+  // Fetch list of entertainers on component mount
 
   useEffect(() => {
     fetch('https://localhost:5000/api/entertainers')

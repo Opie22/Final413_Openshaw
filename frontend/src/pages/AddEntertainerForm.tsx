@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function AddEntertainerForm() {
   const navigate = useNavigate();
-
+//define the interface
   const [formData, setFormData] = useState({
     entStageName: '',
     entSSN: '',
@@ -17,6 +17,7 @@ export default function AddEntertainerForm() {
     dateEntered: new Date().toISOString().split('T')[0], // defaults to today
   });
 
+  // Handle input changes for all fields by updating corresponding value in formData
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -24,6 +25,7 @@ export default function AddEntertainerForm() {
     });
   };
 
+    // Submit handler: Sends form data to the backend API as a POST request
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -36,6 +38,7 @@ export default function AddEntertainerForm() {
         body: JSON.stringify(formData),
       });
 
+      // Handle validation errors from backend
       if (!res.ok) {
         const errorData = await res.json();
         console.error('Validation errors:', errorData);
@@ -43,8 +46,10 @@ export default function AddEntertainerForm() {
         return;
       }
 
+      // Navigate back to the list after successful submission
       navigate('/entertainers');
     } catch (error) {
+        // Handle unexpected errors
       console.error('Unexpected error:', error);
       alert('Something went wrong.');
     }

@@ -1,5 +1,7 @@
 import  { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+// Shows full details of a specific entertainer, with delete/edit options
+
 
 // Define the Entertainer interface
 interface Entertainer {
@@ -20,17 +22,18 @@ export default function EntertainerDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [entertainer, setEntertainer] = useState<Entertainer | null>(null);
-
+// Fetch entertainer data
   useEffect(() => {
     fetch(`https://localhost:5000/api/entertainers/${id}`)
       .then(res => res.json())
       .then(setEntertainer);
   }, [id]);
 
+  // Delete with confirmation
   const deleteEntertainer = async () => {
     const confirmed = window.confirm("Are you sure you want to delete this entertainer?");
     if (!confirmed) return;
-    
+
     await fetch(`https://localhost:5000/api/entertainers/${id}`, {
       method: 'DELETE'
     });

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+// Form for submitting a new entertainer to the backend
 
+// Define the interface
 interface Entertainer {
   entertainerID: number;
   entStageName: string;
@@ -20,7 +22,7 @@ export default function EditEntertainerForm() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<Entertainer | null>(null);
-
+//fetch data
   useEffect(() => {
     fetch(`https://localhost:5000/api/entertainers/${id}`)
       .then(res => res.json())
@@ -42,7 +44,7 @@ export default function EditEntertainerForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData) return;
-
+// Validate the form data and update the entertainer
     const res = await fetch(`https://localhost:5000/api/entertainers/${id}`, {
       method: 'PUT',
       headers: {
