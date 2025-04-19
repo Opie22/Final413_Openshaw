@@ -16,7 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
-        policy => policy.WithOrigins("https://victorious-moss-0e2743b1e.6.azurestaticapps.net")
+        policy => policy.WithOrigins("http://localhost:3000","https://victorious-moss-0e2743b1e.6.azurestaticapps.net")
             .AllowAnyMethod()
             .AllowAnyHeader());
 });

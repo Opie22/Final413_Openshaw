@@ -1,5 +1,7 @@
 import  { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+
+const VITE_BACKEND_URL = 'https://413final-backend-a2babjgsd9azf0c0.eastus-01.azurewebsites.net';
 // Shows full details of a specific entertainer, with delete/edit options
 
 
@@ -24,7 +26,7 @@ export default function EntertainerDetails() {
   const [entertainer, setEntertainer] = useState<Entertainer | null>(null);
 // Fetch entertainer data
   useEffect(() => {
-    fetch(`https://413final-backend-a2babjgsd9azf0c0.eastus-01.azurewebsites.net/api/entertainers/${id}`)
+    fetch(`${VITE_BACKEND_URL}/api/entertainers/${id}`)
       .then(res => res.json())
       .then(setEntertainer);
   }, [id]);
@@ -32,12 +34,22 @@ export default function EntertainerDetails() {
   // Delete with confirmation
   const deleteEntertainer = async () => {
     const confirmed = window.confirm("Are you sure you want to delete this entertainer?");
-    if (!confirmed) return;
+    if (!confirmed || !id) return;
 
-    await fetch(`https://413final-backend-a2babjgsd9azf0c0.eastus-01.azurewebsites.net/entertainers/${id}`, {
-      method: 'DELETE'
-    });
-    navigate('/entertainers');
+    try {
+      const res = await fetch(`${VITE_BACKEND_URL}/api/entertainers/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!res.ok) {
+        throw new Error('Delete failed');
+      }
+
+      navigate('/entertainers');
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete entertainer.");
+    }
   };
 
   if (!entertainer) return <div>Loading...</div>;

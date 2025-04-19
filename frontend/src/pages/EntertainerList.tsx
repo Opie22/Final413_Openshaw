@@ -1,9 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 // Displays a list of entertainers with booking stats and links to details
 
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
+const VITE_BACKEND_URL = 'https://413final-backend-a2babjgsd9azf0c0.eastus-01.azurewebsites.net';
+
 // Summary DTO matching API structure
 
 interface EntertainerSummary {
@@ -18,7 +20,7 @@ export default function EntertainerList() {
   // Fetch list of entertainers on component mount
 
   useEffect(() => {
-    fetch('https://413final-backend-a2babjgsd9azf0c0.eastus-01.azurewebsites.net/api/entertainers')
+    fetch(`${VITE_BACKEND_URL}/api/entertainers`)
       .then(res => res.json())
       .then(setEntertainers);
   }, []);

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+
+const VITE_BACKEND_URL = 'https://413final-backend-a2babjgsd9azf0c0.eastus-01.azurewebsites.net';
 // Form for submitting a new entertainer to the backend
 
 // Define the interface
@@ -24,7 +26,8 @@ export default function EditEntertainerForm() {
   const [formData, setFormData] = useState<Entertainer | null>(null);
 //fetch data
   useEffect(() => {
-    fetch(`https://413final-backend-a2babjgsd9azf0c0.eastus-01.azurewebsites.net/api/entertainers/${id}`)
+    fetch(`${VITE_BACKEND_URL}/api/entertainers/${id}`)
+
       .then(res => res.json())
       .then(setFormData)
       .catch(() => {
@@ -45,7 +48,7 @@ export default function EditEntertainerForm() {
     e.preventDefault();
     if (!formData) return;
 // Validate the form data and update the entertainer
-    const res = await fetch(`https://413final-backend-a2babjgsd9azf0c0.eastus-01.azurewebsites.net/api/entertainers/${id}`, {
+    const res = await fetch(`${VITE_BACKEND_URL}/api/entertainers/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

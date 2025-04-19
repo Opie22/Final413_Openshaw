@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const VITE_BACKEND_URL = 'https://413final-backend-a2babjgsd9azf0c0.eastus-01.azurewebsites.net';
+
+
 export default function AddEntertainerForm() {
   const navigate = useNavigate();
 //define the interface
@@ -30,7 +33,7 @@ export default function AddEntertainerForm() {
     e.preventDefault();
 
     try {
-      const res = await fetch('https://413final-backend-a2babjgsd9azf0c0.eastus-01.azurewebsites.net/api/entertainers', {
+      const res = await fetch(`${VITE_BACKEND_URL}/api/entertainers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
