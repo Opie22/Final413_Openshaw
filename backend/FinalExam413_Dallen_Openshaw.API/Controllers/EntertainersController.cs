@@ -61,6 +61,7 @@ public class EntertainersController : ControllerBase
         await _context.SaveChangesAsync();
         return NoContent();
     }
+    
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteEntertainer(int id)

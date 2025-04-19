@@ -1,12 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+// import React from 'react';
+// import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
+
 export default function Home() {
-    return (
-      <div className="container mt-4">
-        <h1>Welcome to the Entertainment Agency</h1>
-        <p>Book top entertainers and check their availability!</p>
-      </div>
-    );
-  }
-  
+  return (
+<div className="container mt-4 text-center">
+  <h1 className="display-5 fw-bold">Welcome to the Entertainment Agency</h1>
+  <p className="lead">Browse and book our amazing entertainers!</p>
+  <Link to="/entertainers" className="btn btn-primary btn-lg mt-3">
+    View Entertainers
+  </Link>
+</div>
+  );
+}

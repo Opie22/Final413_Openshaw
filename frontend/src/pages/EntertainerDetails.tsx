@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 // Define the Entertainer interface
@@ -28,6 +28,9 @@ export default function EntertainerDetails() {
   }, [id]);
 
   const deleteEntertainer = async () => {
+    const confirmed = window.confirm("Are you sure you want to delete this entertainer?");
+    if (!confirmed) return;
+    
     await fetch(`https://localhost:5000/api/entertainers/${id}`, {
       method: 'DELETE'
     });
@@ -49,6 +52,17 @@ export default function EntertainerDetails() {
       <button className="btn btn-danger me-2" onClick={deleteEntertainer}>
         Delete
       </button>
+      <button
+          className="btn btn-secondary me-2"
+          onClick={() => navigate(`/entertainers/${entertainer.entertainerID}/edit`)}>
+          Edit
+      </button>
+      <button
+        className="btn btn-outline-primary"
+        onClick={() => navigate('/entertainers')}>
+        Return to List
+      </button>
+
     </div>
   );
 }

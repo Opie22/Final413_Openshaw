@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-interface Entertainer {
+// src/pages/EntertainerList.tsx
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+interface EntertainerSummary {
   entertainerID: number;
   entStageName: string;
   bookCount: number;
@@ -11,7 +12,7 @@ interface Entertainer {
 }
 
 export default function EntertainerList() {
-  const [entertainers, setEntertainers] = useState<Entertainer[]>([]);
+  const [entertainers, setEntertainers] = useState<EntertainerSummary[]>([]);
 
   useEffect(() => {
     fetch('https://localhost:5000/api/entertainers')
@@ -22,29 +23,37 @@ export default function EntertainerList() {
   return (
     <div className="container mt-4">
       <h2>Entertainers</h2>
-      <table className="table">
+      <table className="table table-striped">
         <thead>
           <tr>
             <th>Stage Name</th>
-            <th>Times Booked</th>
+            <th>Bookings</th>
             <th>Last Booked</th>
-            <th>Actions</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          {entertainers.map(ent => (
-            <tr key={ent.entertainerID}>
-              <td>{ent.entStageName}</td>
-              <td>{ent.bookCount}</td>
-              <td>{ent.lastBooked || 'Never'}</td>
+          {entertainers.map(e => (
+            <tr key={e.entertainerID}>
+              <td>{e.entStageName}</td>
+              <td>{e.bookCount}</td>
+              <td>{e.lastBooked || 'Never'}</td>
               <td>
-                <Link to={`/entertainers/${ent.entertainerID}`} className="btn btn-primary btn-sm">Details</Link>
+                <Link to={`/entertainers/${e.entertainerID}`} className="btn btn-outline-primary btn-sm">
+                  Details
+                </Link>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <Link to="/entertainers/new" className="btn btn-success">Add Entertainer</Link>
+      <Link to="/entertainers/new" className="btn btn-success mt-3">
+        Add Entertainer
+      </Link>
+      <br></br>
+      <Link to="/" className="btn btn-success mt-3">
+        Home
+      </Link>
     </div>
   );
 }
