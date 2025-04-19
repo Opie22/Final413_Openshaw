@@ -30,7 +30,7 @@ export default function AddEntertainerForm() {
     e.preventDefault();
 
     try {
-      const res = await fetch('https://final413-backend-fgfrbnb2bxfxe0eq.eastus-01.azurewebsites.net/api/entertainers', {
+      const res = await fetch('https://413final-backend-a2babjgsd9azf0c0.eastus-01.azurewebsites.net/api/entertainers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

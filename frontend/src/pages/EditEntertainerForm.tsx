@@ -24,7 +24,7 @@ export default function EditEntertainerForm() {
   const [formData, setFormData] = useState<Entertainer | null>(null);
 //fetch data
   useEffect(() => {
-    fetch(`https://final413-backend-fgfrbnb2bxfxe0eq.eastus-01.azurewebsites.net/api/entertainers/${id}`)
+    fetch(`https://413final-backend-a2babjgsd9azf0c0.eastus-01.azurewebsites.net/api/entertainers/${id}`)
       .then(res => res.json())
       .then(setFormData)
       .catch(() => {
@@ -45,7 +45,7 @@ export default function EditEntertainerForm() {
     e.preventDefault();
     if (!formData) return;
 // Validate the form data and update the entertainer
-    const res = await fetch(`https://final413-backend-fgfrbnb2bxfxe0eq.eastus-01.azurewebsites.net/api/entertainers/${id}`, {
+    const res = await fetch(`https://413final-backend-a2babjgsd9azf0c0.eastus-01.azurewebsites.net/api/entertainers/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
