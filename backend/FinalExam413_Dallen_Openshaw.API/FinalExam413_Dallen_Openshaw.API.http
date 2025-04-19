@@ -1,0 +1,6 @@
+@FinalExam413_Dallen_Openshaw.API_HostAddress = http://localhost:5139
+
+GET {{FinalExam413_Dallen_Openshaw.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
