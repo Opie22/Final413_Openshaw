@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FinalExam413_Dallen_Openshaw.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b257a37f0dd783e979f61827e9d37cf8ad3c46c5")]
 [assembly: System.Reflection.AssemblyProductAttribute("FinalExam413_Dallen_Openshaw.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FinalExam413_Dallen_Openshaw.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
